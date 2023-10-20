@@ -14,16 +14,100 @@ import '../box-styles.css'
 // 🐨 also use the style prop to make the font italic
 // 💰 Here are available style attributes: backgroundColor, fontStyle
 
-const smallBox = <div>small lightblue box</div>
-const mediumBox = <div>medium pink box</div>
-const largeBox = <div>large orange box</div>
+const smallBox = (
+  <div
+    className="box box--small"
+    style={{background: 'lightblue', fontStyle: 'italic'}}
+  >
+    small lightblue box
+  </div>
+)
+const mediumBox = (
+  <div
+    className="box box--medium"
+    style={{background: 'pink', fontStyle: 'italic'}}
+  >
+    medium pink box
+  </div>
+)
+const largeBox = (
+  <div
+    className="box box--large"
+    style={{background: 'orange', fontStyle: 'italic'}}
+  >
+    large orange box
+  </div>
+)
+
+// Extra 1:
+function Box({style, className = '', ...otherProps}) {
+  return (
+    <div
+      className={`box ${className}`}
+      style={{fontStyle: 'italic', ...style}}
+      {...otherProps}
+    />
+  )
+}
+
+const smallBox1 = (
+  <Box className="box--small" style={{backgroundColor: 'lightblue'}}>
+    small lightblue box
+  </Box>
+)
+
+const mediumBox1 = (
+  <Box className="box--medium" style={{backgroundColor: 'pink'}}>
+    medium pink box
+  </Box>
+)
+
+const largeBox1 = (
+  <Box className="box--large" style={{backgroundColor: 'orange'}}>
+    large orange box
+  </Box>
+)
+
+const sizelessBox = <Box>sizeless box</Box>
+
+// Extra 2:
+function Box2({style, size, ...otherProps}) {
+  return (
+    <div
+      className={size ? `box box--${size}` : `box`}
+      style={{fontStyle: 'italic', ...style}}
+      {...otherProps}
+    />
+  )
+}
+
+const smallBox2 = (
+  <Box2 size="small" style={{backgroundColor: 'lightblue'}}>
+    small lightblue box
+  </Box2>
+)
+
+const mediumBox2 = (
+  <Box2 size="medium" style={{backgroundColor: 'pink'}}>
+    medium pink box
+  </Box2>
+)
+
+const largeBox2 = (
+  <Box2 size="large" style={{backgroundColor: 'orange'}}>
+    large orange box
+  </Box2>
+)
+
+const sizelessBox2 = <Box2>sizeless box</Box2>
 
 function App() {
   return (
     <div>
-      {smallBox}
-      {mediumBox}
-      {largeBox}
+      {smallBox2}
+      {mediumBox2}
+      {largeBox2}
+      {sizelessBox2}
     </div>
   )
 }
