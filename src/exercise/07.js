@@ -30,15 +30,17 @@ function App() {
       <ul>
         {items.map(item => (
           // 🐨 add a key prop to the <li> below. Set it to item.id
-          <li>
+          <li key={item.id}>
             <button onClick={() => removeItem(item)}>remove</button>{' '}
             <label htmlFor={`${item.id}-input`}>{item.value}</label>{' '}
             <input id={`${item.id}-input`} defaultValue={item.value} />
           </li>
         ))}
       </ul>
+      <h1>pochita</h1>
     </div>
   )
 }
 
 export default App
+console.log('guapo')
